@@ -1,13 +1,7 @@
-/* ============================================================
-   PawHome — style.css
-   Custom layer on top of Bootstrap 5
-   Design tokens from Figma: kabbaj_mohamedali_prototype
-   ============================================================ */
-
 /* ── Google Fonts ─────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* ── CSS Custom Properties (Design Tokens) ───────────────── */
+/* ── CSS Custom Properties ───────────────── */
 :root {
   /* Colours */
   --ph-teal:          #267566;
@@ -58,7 +52,7 @@
   --bs-card-bg:             #fff;
 }
 
-/* ── Base ─────────────────────────────────────────────────── */
+/* ── Base ────────────────────────── */
 *,
 *::before,
 *::after {
@@ -93,7 +87,7 @@ body {
   top: 0;
 }
 
-/* ── Navbar ───────────────────────────────────────────────── */
+/* ── Navbar ───────────────────── */
 .navbar {
   background-color: var(--ph-surface) !important;
   border-bottom: 1px solid var(--ph-line);
@@ -162,10 +156,7 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(38,117,102,0.25);
 }
 
-/* ── Buttons ──────────────────────────────────────────────────
-   Bootstrap 5.3 buttons read their colours from --bs-btn-* custom
-   properties, so overriding those (rather than plain background-
-   color/border-color) is what actually drives every state below. */
+/* ── Buttons ────────── */
 .btn-primary {
   --bs-btn-color:               #fff;
   --bs-btn-bg:                  var(--ph-teal);
@@ -211,7 +202,7 @@ body {
   box-shadow: 0 4px 12px rgba(38,117,102,0.25);
 }
 
-/* ── Hero Section ─────────────────────────────────────────── */
+/* ── Hero Section ──────────────────── */
 .hero-section {
   background-color: var(--ph-teal-light);
   min-height: 260px;
@@ -224,7 +215,7 @@ body {
   object-fit: contain;
 }
 
-/* ── Pet Cards ─────────────────────────────────────────────── */
+/*Pet Cards ──── */
 .pet-card {
   position: relative;
   border-radius: 10px;
@@ -240,8 +231,7 @@ body {
   box-shadow: 0 8px 24px rgba(38,117,102,0.15);
 }
 
-/* Card link: covers the card's clickable area (image + body) without
-   wrapping the heart button, so a <button> never sits inside an <a> */
+/* Card link:*/
 .pet-card-link {
   text-decoration: none;
   color: inherit;
@@ -322,7 +312,7 @@ body {
   outline-offset: 1px;
 }
 
-/* ── Badges ───────────────────────────────────────────────── */
+/* ── Badges ────────── */
 .badge-teal {
   background-color: var(--ph-teal-light);
   color: var(--ph-teal);
@@ -357,7 +347,7 @@ body {
   align-items: center;
 }
 
-/* ── Filter Chips ─────────────────────────────────────────── */
+/* ── Filter Chips ──────────────────── */
 .filter-chip {
   border-radius: 15px;
   border: 1px solid var(--ph-line);
@@ -448,10 +438,7 @@ body {
   border-color: var(--ph-teal);
 }
 
-/* ── FAQ Accordion ────────────────────────────────────────────
-   Bootstrap's accordion is fully driven by --bs-accordion-* custom
-   properties, so setting those on .accordion (rather than styling
-   .accordion-item/.accordion-button directly) covers every state. */
+/* ── FAQ Accordion ─────────────────────────────────────────*/
 .accordion {
   --bs-accordion-color:                var(--ph-mid);
   --bs-accordion-bg:                   var(--ph-surface);
@@ -480,7 +467,7 @@ body {
   line-height: 1.6;
 }
 
-/* ── How It Works Steps ───────────────────────────────────── */
+/* ── How It Works Steps ────────────────── */
 .step-number {
   width: 32px;
   height: 32px;
@@ -503,7 +490,7 @@ body {
   margin: 2px 0 2px 15px;
 }
 
-/* ── Resource Cards (Post-Adoption Hub) ───────────────────── */
+/* ── Resource Cards ────── */
 .resource-card {
   border-radius: 10px;
   overflow: hidden;
@@ -521,9 +508,7 @@ body {
   color: inherit;
 }
 
-/* ── Modal ────────────────────────────────────────────────────
-   Same pattern as buttons/accordion: point Bootstrap's own modal
-   variables at the design tokens instead of writing new selectors. */
+/* ── Modal ───────────*/
 .modal {
   --bs-modal-bg:           var(--ph-surface);
   --bs-modal-color:        var(--ph-dark);
@@ -534,7 +519,7 @@ body {
   font-size: 0.875rem;
 }
 
-/* ── Progress Bar (Form) ──────────────────────────────────── */
+/* ── Progress Bar (Form) ──────────── */
 .form-progress-bar {
   height: 8px;
   border-radius: 4px;
@@ -549,7 +534,7 @@ body {
   transition: width 0.3s ease;
 }
 
-/* ── Form Inputs ──────────────────────────────────────────── */
+/* ── Form Inputs ────────────── */
 .form-control {
   border: 1px solid var(--ph-line);
   border-radius: 8px;
@@ -588,7 +573,7 @@ body {
   margin: 0;
 }
 
-/* ── Confirmation Page ────────────────────────────────────── */
+/* ── Confirmation Page ──────────────────── */
 .confirm-circle {
   width: 112px;
   height: 112px;
@@ -627,7 +612,7 @@ body {
   line-height: 1.5;
 }
 
-/* ── Breadcrumb ───────────────────────────────────────────── */
+/* ── Breadcrumb ─────────────────── */
 .breadcrumb-item a {
   color: var(--ph-mid);
   text-decoration: none;
@@ -641,7 +626,7 @@ body {
   color: var(--ph-dark);
 }
 
-/* ── Pagination ───────────────────────────────────────────── */
+/* ── Pagination ────────────────────── */
 .pagination-row {
   font-size: 0.75rem;
   color: var(--ph-mid);
@@ -662,7 +647,7 @@ body {
   font-weight: 700;
 }
 
-/* ── Footer ───────────────────────────────────────────────── */
+/* ── Footer ───────────────────────────── */
 .site-footer {
   background-color: var(--ph-footer-bg);
   color: #b3b3b3;
@@ -679,14 +664,14 @@ body {
   color: var(--ph-teal-light);
 }
 
-/* ── AOS Animations ───────────────────────────────────────── */
+/* ── AOS Animations ─────────────────────── */
 [data-aos] {
   transition-timing-function: ease-out;
 }
 
-/* ── Responsive Utilities ─────────────────────────────────── */
+/* ── Responsive Utilities ─────────────────────── */
 
-/* Mobile (base) */
+/* Mobile  */
 .section-title {
   font-size: 0.875rem;
   font-weight: 600;
@@ -729,7 +714,7 @@ body {
   .container  { max-width: 1280px; }
 }
 
-/* ── Utility ──────────────────────────────────────────────── */
+/* ── Utility ──────────────────── */
 .text-teal    { color: var(--ph-teal) !important; }
 .text-mid     { color: var(--ph-mid)  !important; }
 .text-terra   { color: var(--ph-terra) !important; }
@@ -740,7 +725,7 @@ body {
 .rounded-10    { border-radius: 10px; }
 .rounded-20    { border-radius: 20px; }
 
-/* Visually hidden (skip links, screen reader text) */
+/* Visually hidden */
 .visually-hidden:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -751,9 +736,7 @@ body {
   width: 1px;
 }
 
-/* ── User Preference: Reduced Motion ─────────────────────────
-   Turns off scroll animation, AOS transforms, and hover/transition
-   movement for anyone with motion sensitivity set at the OS level. */
+/* ── User Preference:*/
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -780,9 +763,7 @@ body {
   }
 }
 
-/* ── User Preference: Dark Colour Scheme ─────────────────────
-   Re-maps the same design tokens instead of introducing new rules,
-   so every component that already reads var(--ph-*) updates for free. */
+/* ── User Preference*/
 @media (prefers-color-scheme: dark) {
   :root {
     --ph-teal-light:  #17342e;
