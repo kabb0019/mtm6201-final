@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddy — PawHome</title>
+  <meta name="description" content="Meet Buddy, a friendly Lab Mix looking for a home at PawHome Shelter, Ottawa.">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ── HEADER / NAVBAR ─────────────────────────────────────── -->
+  <header>
+    <nav class="navbar navbar-expand-md sticky-top" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">🐾 PawHome</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav gap-md-1">
+            <li class="nav-item"><a class="nav-link active" href="browse.html" aria-current="page">Adopt</a></li>
+            <li class="nav-item"><a class="nav-link" href="browse.html">Foster</a></li>
+            <li class="nav-item"><a class="nav-link" href="browse.html">Donate</a></li>
+            <li class="nav-item"><a class="nav-link" href="browse.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── MAIN ─────────────────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- ── BREADCRUMB ───────────────────────────────────────── -->
+    <div class="container pt-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="font-size:0.688rem;">
+          <li class="breadcrumb-item"><a href="browse.html">Adopt</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Buddy</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- ── PHOTO GALLERY ────────────────────────────────────── -->
+    <section class="py-3" aria-labelledby="gallery-heading">
+      <div class="container">
+        <h1 class="visually-hidden" id="gallery-heading">Buddy's photos</h1>
+
+        <img id="main-photo"
+             src="images/buddy-profile.png"
+             srcset="images/buddy-profile-sm.png 525w, images/buddy-profile.png 1049w"
+             sizes="(max-width:768px) 100vw, 900px"
+             alt="Buddy — Labrador mix dog lying outdoors"
+             class="profile-hero-img mb-2" data-aos="fade-in" data-aos-duration="400">
+
+        <div class="thumbnail-row" role="group" aria-label="Buddy photo thumbnails">
+          <img src="images/buddy-profile-sm.png" alt="Buddy photo 1"
+               class="thumbnail-img active" tabindex="0"
+               onclick="swapPhoto(this, 'images/buddy-profile.png', 'images/buddy-profile-sm.png 525w, images/buddy-profile.png 1049w')">
+          <img src="images/buddy-sm.png" alt="Buddy photo 2"
+               class="thumbnail-img" tabindex="0"
+               onclick="swapPhoto(this, 'images/buddy.png', 'images/buddy-sm.png 251w, images/buddy.png 503w')">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT + CTA ──────────────────────────────────────── -->
+    <section class="py-3" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="row g-4">
+
+          <div class="col-12 col-md-7">
+            <h2 class="section-title mb-1" id="about-heading">Buddy</h2>
+            <p class="text-mid mb-3" style="font-size:0.75rem;">Labrador Mix · 2 years · Male</p>
+
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge-teal"><i class="fa-solid fa-syringe me-1" aria-hidden="true"></i>Vaccinated</span>
+              <span class="badge-amber">Good w/ kids</span>
+              <span class="badge-terra">Energetic</span>
+            </div>
+
+            <h3 class="fw-semibold mb-2" style="font-size:0.75rem;">About Buddy</h3>
+            <p class="text-mid" style="font-size:0.75rem; line-height:1.7;">
+              Buddy is a friendly, energetic Lab mix who loves long walks and belly rubs.
+              He's great with children and other dogs, and is fully vaccinated and microchipped.
+              He's spent the last few months at the shelter and is more than ready for a family
+              of his own to come home to.
+            </p>
+          </div>
+
+          <div class="col-12 col-md-5">
+            <div class="d-flex flex-column gap-2 mb-3">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adoptModal">
+                Start Adoption App
+              </button>
+              <button type="button" class="btn btn-outline-primary" id="save-btn" onclick="toggleSave(this)">
+                <i class="fa-regular fa-heart me-1" aria-hidden="true"></i>Save
+              </button>
+            </div>
+            <p class="text-mid" style="font-size:0.688rem;">
+              <i class="fa-solid fa-location-dot me-1" aria-hidden="true"></i>
+              Visit us: 123 Shelter Lane, Ottawa · Open 10am–5pm daily
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ──────────────────────────────────────────────── -->
+    <section class="py-4 py-md-5" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 class="section-title mb-3" id="faq-heading" data-aos="fade-up">Frequently Asked Questions</h2>
+
+        <div class="accordion" id="profileFaq">
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                How long does the process take?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#profileFaq">
+              <div class="accordion-body">
+                Most adoptions are completed within 5–7 business days after your application is submitted, including a home visit.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Is there an adoption fee?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#profileFaq">
+              <div class="accordion-body">
+                Yes, adoption fees range from $150–$300 depending on species and age, and cover vaccinations and microchipping.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Can I foster before adopting?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#profileFaq">
+              <div class="accordion-body">
+                Yes, we offer trial fostering for most animals so you can make sure it's the right fit before finalizing an adoption.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SIMILAR ANIMALS ──────────────────────────────────── -->
+    <section class="py-4 py-md-5 bg-white" aria-labelledby="similar-heading">
+      <div class="container">
+        <h2 class="section-title mb-3" id="similar-heading" data-aos="fade-up">You Might Also Like</h2>
+
+        <div class="row g-3">
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="0">
+            <article class="pet-card">
+              <a href="browse.html" class="pet-card-link" aria-label="View Max's profile — Beagle, 3 years">
+                <div class="pet-card-img-wrap" style="background-color:var(--ph-teal-light);">
+                  <img src="images/max.png" srcset="images/max-sm.png 149w, images/max.png 299w"
+                       sizes="(max-width:576px) 150px, 200px" alt="Max — Beagle dog standing on grass" loading="lazy">
+                </div>
+                <div class="pet-card-body"><p class="pet-card-name">Max · Beagle · 3y</p></div>
+              </a>
+            </article>
+          </div>
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="80">
+            <article class="pet-card">
+              <a href="browse.html" class="pet-card-link" aria-label="View Rosie's profile — Terrier, 1 year">
+                <div class="pet-card-img-wrap" style="background-color:var(--ph-sage-light);">
+                  <img src="images/rosie.png" srcset="images/rosie-sm.png 236w, images/rosie.png 472w"
+                       sizes="(max-width:576px) 150px, 200px" alt="Rosie — Irish terrier standing on a log" loading="lazy">
+                </div>
+                <div class="pet-card-body"><p class="pet-card-name">Rosie · Terrier · 1y</p></div>
+              </a>
+            </article>
+          </div>
+          <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="160">
+            <article class="pet-card">
+              <a href="browse.html" class="pet-card-link" aria-label="View Bella's profile — Husky, 2 years">
+                <div class="pet-card-img-wrap" style="background-color:var(--ph-teal-light);">
+                  <img src="images/bella.png" srcset="images/bella-sm.png 413w, images/bella.png 826w"
+                       sizes="(max-width:576px) 150px, 200px" alt="Bella — Siberian Husky lying on grass" loading="lazy">
+                </div>
+                <div class="pet-card-body"><p class="pet-card-name">Bella · Husky · 2y</p></div>
+              </a>
+            </article>
+          </div>
+          <div class="col-6 col-md-3 d-none d-md-block" data-aos="fade-up" data-aos-delay="240">
+            <article class="pet-card">
+              <a href="browse.html" class="pet-card-link" aria-label="View Scout's profile — Mixed breed dog, 3 years">
+                <div class="pet-card-img-wrap" style="background-color:var(--ph-amber-light);">
+                  <img src="images/scout.png" srcset="images/scout-sm.png 157w, images/scout.png 314w"
+                       sizes="200px" alt="Scout — brown and white mixed breed dog sitting indoors" loading="lazy">
+                </div>
+                <div class="pet-card-body"><p class="pet-card-name">Scout · Mix · 3y</p></div>
+              </a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── ADOPTION MODAL ───────────────────────────────────────── -->
+  <div class="modal fade" id="adoptModal" tabindex="-1" aria-labelledby="adoptModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="adoptModalLabel" style="font-size:0.875rem;">Start your application for Buddy</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="font-size:0.75rem;">
+          <p>Buddy is held for 5 business days once your application is submitted, so no one else can adopt him while it's reviewed.</p>
+          <p class="mb-0 text-mid" style="font-size:0.688rem;">Our full application form is coming soon. In the meantime, reach out directly at <a href="mailto:adopt@pawhome.example">adopt@pawhome.example</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 mb-1 mb-md-0">
+          <span>PawHome Shelter · Ottawa, ON</span>
+        </div>
+        <div class="col-12 col-md-6 text-md-end">
+          <nav aria-label="Footer navigation">
+            <a href="browse.html">Adopt</a><span class="mx-1">·</span>
+            <a href="browse.html">Foster</a><span class="mx-1">·</span>
+            <a href="browse.html">Donate</a><span class="mx-1">·</span>
+            <a href="browse.html">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      offset: 60,
+      duration: 500,
+      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    });
+
+    function swapPhoto(thumb, src, srcset) {
+      const mainPhoto = document.getElementById('main-photo');
+      mainPhoto.src = src;
+      mainPhoto.srcset = srcset;
+      document.querySelectorAll('.thumbnail-img').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    }
+
+    function toggleSave(btn) {
+      const icon = btn.querySelector('i');
+      const saved = icon.classList.contains('fa-solid');
+      icon.classList.toggle('fa-solid', !saved);
+      icon.classList.toggle('fa-regular', saved);
+      btn.lastChild.textContent = saved ? 'Save' : 'Saved';
+    }
+  </script>
+
+</body>
+</html>
