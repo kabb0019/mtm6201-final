@@ -1,0 +1,814 @@
+/* ============================================================
+   PawHome — style.css
+   Custom layer on top of Bootstrap 5
+   Design tokens from Figma: kabbaj_mohamedali_prototype
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── CSS Custom Properties (Design Tokens) ───────────────── */
+:root {
+  /* Colours */
+  --ph-teal:          #267566;
+  --ph-teal-light:    #d6ede5;
+  --ph-teal-dark:     #1a5447;
+  --ph-amber:         #de8a2b;
+  --ph-amber-light:   #fcedcf;
+  --ph-terra:         #c2573d;
+  --ph-terra-light:   #fce5de;
+  --ph-sage:          #8aa98f;
+  --ph-sage-light:    #e5f2e8;
+  --ph-cream:         #fcf7eb;
+  --ph-dark:          #1c2126;
+  --ph-mid:           #737373;
+  --ph-line:          #e0dbd1;
+  --ph-footer-bg:     #1c2126;
+  --ph-surface:       #fff;
+  --ph-focus-rgb:     38, 117, 102;
+
+  /* Bootstrap overrides via CSS custom properties */
+  --bs-body-bg:             var(--ph-cream);
+  --bs-body-color:          var(--ph-dark);
+  --bs-body-font-family:    'Inter', sans-serif;
+  --bs-link-color:          var(--ph-teal);
+  --bs-link-hover-color:    var(--ph-teal-dark);
+  --bs-border-color:        var(--ph-line);
+  --bs-primary:             var(--ph-teal);
+  --bs-primary-rgb:         38, 117, 102;
+
+  /* Nav */
+  --bs-navbar-color:          var(--ph-dark);
+  --bs-navbar-hover-color:    var(--ph-teal);
+  --bs-navbar-active-color:   var(--ph-teal);
+  --bs-navbar-brand-color:    var(--ph-teal);
+  --bs-navbar-brand-hover-color: var(--ph-teal-dark);
+  --bs-nav-link-color:        var(--ph-dark);
+  --bs-nav-link-hover-color:  var(--ph-teal);
+
+  /* Buttons */
+  --bs-btn-border-radius:   8px;
+  --bs-btn-font-family:     'Inter', sans-serif;
+  --bs-btn-font-weight:     600;
+  --bs-btn-transition:      all 0.2s ease;
+
+  /* Cards */
+  --bs-card-border-color:   var(--ph-line);
+  --bs-card-border-radius:  10px;
+  --bs-card-bg:             #fff;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--ph-cream);
+  color: var(--ph-dark);
+  min-width: 320px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--ph-teal);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  border-radius: 0 0 8px 0;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Navbar ───────────────────────────────────────────────── */
+.navbar {
+  background-color: var(--ph-surface) !important;
+  border-bottom: 1px solid var(--ph-line);
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 64px;
+}
+
+.navbar-brand {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ph-teal) !important;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: var(--ph-teal-dark) !important;
+  opacity: 0.85;
+}
+
+.nav-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ph-dark) !important;
+  padding: 0.5rem 0.75rem !important;
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 2px;
+  background: var(--ph-teal);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+  border-radius: 2px;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--ph-teal) !important;
+}
+.nav-link:hover::after,
+.nav-link:focus::after {
+  transform: scaleX(1);
+}
+.nav-link.active {
+  color: var(--ph-teal) !important;
+  font-weight: 600;
+}
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* Hamburger toggler */
+.navbar-toggler {
+  border-color: var(--ph-line);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.navbar-toggler:hover {
+  border-color: var(--ph-teal);
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(38,117,102,0.25);
+}
+
+/* ── Buttons ──────────────────────────────────────────────────
+   Bootstrap 5.3 buttons read their colours from --bs-btn-* custom
+   properties, so overriding those (rather than plain background-
+   color/border-color) is what actually drives every state below. */
+.btn-primary {
+  --bs-btn-color:               #fff;
+  --bs-btn-bg:                  var(--ph-teal);
+  --bs-btn-border-color:        var(--ph-teal);
+  --bs-btn-hover-color:         #fff;
+  --bs-btn-hover-bg:            var(--ph-teal-dark);
+  --bs-btn-hover-border-color:  var(--ph-teal-dark);
+  --bs-btn-active-color:        #fff;
+  --bs-btn-active-bg:           var(--ph-teal-dark);
+  --bs-btn-active-border-color: var(--ph-teal-dark);
+  --bs-btn-focus-shadow-rgb:    var(--ph-focus-rgb);
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(38,117,102,0.25);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline-primary {
+  --bs-btn-color:               var(--ph-teal);
+  --bs-btn-border-color:        var(--ph-teal);
+  --bs-btn-hover-color:         #fff;
+  --bs-btn-hover-bg:            var(--ph-teal);
+  --bs-btn-hover-border-color:  var(--ph-teal);
+  --bs-btn-active-color:        #fff;
+  --bs-btn-active-bg:           var(--ph-teal);
+  --bs-btn-active-border-color: var(--ph-teal);
+  --bs-btn-focus-shadow-rgb:    var(--ph-focus-rgb);
+  font-weight: 600;
+  border-radius: 8px;
+  border-width: 1.5px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(38,117,102,0.25);
+}
+
+/* ── Hero Section ─────────────────────────────────────────── */
+.hero-section {
+  background-color: var(--ph-teal-light);
+  min-height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-pet-img {
+  max-height: 280px;
+  object-fit: contain;
+}
+
+/* ── Pet Cards ─────────────────────────────────────────────── */
+.pet-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--ph-line);
+  background: var(--ph-surface);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: block;
+}
+.pet-card:hover,
+.pet-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(38,117,102,0.15);
+}
+
+/* Card link: covers the card's clickable area (image + body) without
+   wrapping the heart button, so a <button> never sits inside an <a> */
+.pet-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.pet-card-link:focus {
+  outline: none;
+}
+.pet-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.pet-card-link:focus-visible::after {
+  outline: 2px solid var(--ph-teal);
+  outline-offset: 2px;
+}
+
+.pet-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background-color: var(--ph-teal-light);
+  position: relative;
+}
+.pet-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.pet-card:hover .pet-card-img-wrap img {
+  transform: scale(1.04);
+}
+
+.pet-card-body {
+  padding: 0.6rem 0.75rem 0.75rem;
+}
+.pet-card-name {
+  font-size: 0.688rem;
+  font-weight: 600;
+  color: var(--ph-dark);
+  margin-bottom: 0;
+}
+.pet-card-meta {
+  font-size: 0.563rem;
+  color: var(--ph-mid);
+  margin-bottom: 0;
+}
+
+.heart-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 24px;
+  background: var(--ph-surface);
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ph-terra);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.heart-btn:hover,
+.heart-btn:focus {
+  color: var(--ph-terra);
+  transform: scale(1.2);
+}
+.heart-btn:focus {
+  outline: 2px solid var(--ph-terra);
+  outline-offset: 1px;
+}
+
+/* ── Badges ───────────────────────────────────────────────── */
+.badge-teal {
+  background-color: var(--ph-teal-light);
+  color: var(--ph-teal);
+  border: 1px solid var(--ph-teal);
+  border-radius: 13px;
+  font-size: 0.688rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+}
+.badge-amber {
+  background-color: var(--ph-amber-light);
+  color: var(--ph-amber);
+  border: 1px solid var(--ph-amber);
+  border-radius: 13px;
+  font-size: 0.688rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+}
+.badge-terra {
+  background-color: var(--ph-terra-light);
+  color: var(--ph-terra);
+  border: 1px solid var(--ph-terra);
+  border-radius: 13px;
+  font-size: 0.688rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Filter Chips ─────────────────────────────────────────── */
+.filter-chip {
+  border-radius: 15px;
+  border: 1px solid var(--ph-line);
+  background: var(--ph-surface);
+  color: var(--ph-dark);
+  font-size: 0.688rem;
+  font-weight: 400;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.filter-chip:hover,
+.filter-chip:focus {
+  border-color: var(--ph-teal);
+  color: var(--ph-teal);
+  background: var(--ph-teal-light);
+  outline: none;
+}
+.filter-chip.active {
+  background-color: var(--ph-teal);
+  border-color: var(--ph-teal);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── Search Bar ───────────────────────────────────────────── */
+.search-bar {
+  border: 1px solid var(--ph-line);
+  border-radius: 8px;
+  background: var(--ph-surface);
+  padding: 0.625rem 1rem;
+  font-size: 0.688rem;
+  color: var(--ph-mid);
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.search-bar:focus {
+  border-color: var(--ph-teal);
+  box-shadow: 0 0 0 0.2rem rgba(38,117,102,0.15);
+  outline: none;
+  color: var(--ph-dark);
+}
+
+/* ── Testimonial / Success Stories ───────────────────────── */
+.success-card {
+  background-color: var(--ph-teal-light);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  font-style: italic;
+  color: var(--ph-teal-dark);
+  font-size: 0.688rem;
+  line-height: 1.6;
+}
+
+/* ── Profile Page ─────────────────────────────────────────── */
+.profile-hero-img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  max-height: 320px;
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.thumbnail-row::-webkit-scrollbar {
+  height: 4px;
+}
+.thumbnail-img {
+  width: 88px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+.thumbnail-img:hover,
+.thumbnail-img:focus {
+  border-color: var(--ph-teal);
+  outline: none;
+}
+.thumbnail-img.active {
+  border-color: var(--ph-teal);
+}
+
+/* ── FAQ Accordion ────────────────────────────────────────────
+   Bootstrap's accordion is fully driven by --bs-accordion-* custom
+   properties, so setting those on .accordion (rather than styling
+   .accordion-item/.accordion-button directly) covers every state. */
+.accordion {
+  --bs-accordion-color:                var(--ph-mid);
+  --bs-accordion-bg:                   var(--ph-surface);
+  --bs-accordion-border-color:         var(--ph-line);
+  --bs-accordion-border-radius:        8px;
+  --bs-accordion-btn-color:            var(--ph-dark);
+  --bs-accordion-btn-bg:               var(--ph-surface);
+  --bs-accordion-btn-focus-border-color: var(--ph-teal);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(38,117,102,0.2);
+  --bs-accordion-active-color:         var(--ph-teal);
+  --bs-accordion-active-bg:            var(--ph-teal-light);
+  --bs-accordion-transition:           color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.accordion-item {
+  overflow: hidden;
+  margin-bottom: 0.625rem;
+}
+.accordion-button {
+  font-weight: 500;
+  font-size: 0.688rem;
+  padding: 0.75rem 1rem;
+}
+.accordion-body {
+  font-size: 0.688rem;
+  padding: 0.75rem 1rem;
+  line-height: 1.6;
+}
+
+/* ── How It Works Steps ───────────────────────────────────── */
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ph-teal);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-connector {
+  width: 2px;
+  background-color: var(--ph-teal-light);
+  flex-grow: 1;
+  min-height: 24px;
+  margin: 2px 0 2px 15px;
+}
+
+/* ── Resource Cards (Post-Adoption Hub) ───────────────────── */
+.resource-card {
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ph-surface);
+  border: 1px solid var(--ph-line);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.resource-card:hover,
+.resource-card:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(38,117,102,0.12);
+  color: inherit;
+}
+
+/* ── Modal ────────────────────────────────────────────────────
+   Same pattern as buttons/accordion: point Bootstrap's own modal
+   variables at the design tokens instead of writing new selectors. */
+.modal {
+  --bs-modal-bg:           var(--ph-surface);
+  --bs-modal-color:        var(--ph-dark);
+  --bs-modal-border-color: var(--ph-line);
+  --bs-modal-border-radius: 10px;
+}
+.modal-title {
+  font-size: 0.875rem;
+}
+
+/* ── Progress Bar (Form) ──────────────────────────────────── */
+.form-progress-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--ph-line);
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.form-progress-fill {
+  height: 100%;
+  background: var(--ph-teal);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* ── Form Inputs ──────────────────────────────────────────── */
+.form-control {
+  border: 1px solid var(--ph-line);
+  border-radius: 8px;
+  font-size: 0.688rem;
+  color: var(--ph-dark);
+  padding: 0.625rem 0.75rem;
+  background: var(--ph-surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-control:focus {
+  border-color: var(--ph-teal);
+  box-shadow: 0 0 0 0.2rem rgba(38,117,102,0.15);
+}
+.form-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--ph-dark);
+  margin-bottom: 0.375rem;
+}
+
+/* Tip box */
+.tip-box {
+  background: var(--ph-teal-light);
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+}
+.tip-box .tip-title {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--ph-teal);
+  margin-bottom: 0.25rem;
+}
+.tip-box p {
+  font-size: 0.625rem;
+  color: var(--ph-teal-dark);
+  margin: 0;
+}
+
+/* ── Confirmation Page ────────────────────────────────────── */
+.confirm-circle {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: var(--ph-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.25rem;
+  color: var(--ph-teal);
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+.ref-box {
+  background: var(--ph-surface);
+  border: 1px solid var(--ph-line);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+.ref-label {
+  font-size: 0.563rem;
+  color: var(--ph-mid);
+  margin-bottom: 0.125rem;
+}
+.ref-number {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ph-dark);
+}
+
+.hold-note {
+  font-size: 0.625rem;
+  color: var(--ph-terra);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ── Breadcrumb ───────────────────────────────────────────── */
+.breadcrumb-item a {
+  color: var(--ph-mid);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.breadcrumb-item a:hover,
+.breadcrumb-item a:focus {
+  color: var(--ph-teal);
+}
+.breadcrumb-item.active {
+  color: var(--ph-dark);
+}
+
+/* ── Pagination ───────────────────────────────────────────── */
+.pagination-row {
+  font-size: 0.75rem;
+  color: var(--ph-mid);
+  font-weight: 500;
+}
+.pagination-row a {
+  color: var(--ph-mid);
+  text-decoration: none;
+  padding: 0 0.25rem;
+  transition: color 0.2s ease;
+}
+.pagination-row a:hover,
+.pagination-row a:focus {
+  color: var(--ph-teal);
+}
+.pagination-row a.active {
+  color: var(--ph-teal);
+  font-weight: 700;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.site-footer {
+  background-color: var(--ph-footer-bg);
+  color: #b3b3b3;
+  font-size: 0.625rem;
+  padding: 1rem 1.5rem;
+}
+.site-footer a {
+  color: #b3b3b3;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--ph-teal-light);
+}
+
+/* ── AOS Animations ───────────────────────────────────────── */
+[data-aos] {
+  transition-timing-function: ease-out;
+}
+
+/* ── Responsive Utilities ─────────────────────────────────── */
+
+/* Mobile (base) */
+.section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ph-dark);
+}
+.hero-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ph-dark);
+  line-height: 1.2;
+}
+.hero-subtitle {
+  font-size: 0.688rem;
+  color: var(--ph-mid);
+}
+
+/* Tablet (md: 768px) */
+@media (min-width: 768px) {
+  .hero-title   { font-size: 2rem; }
+  .hero-subtitle { font-size: 0.875rem; }
+  .section-title { font-size: 1.125rem; }
+  .pet-card-name { font-size: 0.75rem; }
+  .pet-card-meta { font-size: 0.625rem; }
+  .nav-link      { font-size: 0.8125rem; padding: 0.5rem 1rem !important; }
+}
+
+/* Desktop (lg: 992px) */
+@media (min-width: 992px) {
+  .hero-section  { min-height: 420px; }
+  .hero-title    { font-size: 3.5rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .section-title { font-size: 1.375rem; }
+  .nav-link      { font-size: 0.875rem; padding: 0.5rem 1.25rem !important; }
+  .profile-hero-img { max-height: 420px; }
+}
+
+/* Wide desktop (xl: 1200px+) */
+@media (min-width: 1200px) {
+  .hero-title { font-size: 4rem; }
+  .container  { max-width: 1280px; }
+}
+
+/* ── Utility ──────────────────────────────────────────────── */
+.text-teal    { color: var(--ph-teal) !important; }
+.text-mid     { color: var(--ph-mid)  !important; }
+.text-terra   { color: var(--ph-terra) !important; }
+.bg-teal-light { background-color: var(--ph-teal-light) !important; }
+.bg-amber-light { background-color: var(--ph-amber-light) !important; }
+.bg-sage-light  { background-color: var(--ph-sage-light)  !important; }
+.bg-cream      { background-color: var(--ph-cream) !important; }
+.rounded-10    { border-radius: 10px; }
+.rounded-20    { border-radius: 20px; }
+
+/* Visually hidden (skip links, screen reader text) */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* ── User Preference: Reduced Motion ─────────────────────────
+   Turns off scroll animation, AOS transforms, and hover/transition
+   movement for anyone with motion sensitivity set at the OS level. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-aos] {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .pet-card:hover,
+  .pet-card:focus-within,
+  .btn-primary:hover,
+  .btn-outline-primary:hover,
+  .resource-card:hover,
+  .heart-btn:hover {
+    transform: none !important;
+  }
+}
+
+/* ── User Preference: Dark Colour Scheme ─────────────────────
+   Re-maps the same design tokens instead of introducing new rules,
+   so every component that already reads var(--ph-*) updates for free. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ph-teal-light:  #17342e;
+    --ph-amber-light: #3a2c14;
+    --ph-terra-light: #3a2018;
+    --ph-sage-light:  #1f2b22;
+    --ph-cream:       #14181c;
+    --ph-dark:        #f2f0ea;
+    --ph-mid:         #a8a49c;
+    --ph-line:         #2c3238;
+    --ph-footer-bg:    #0e1114;
+    --ph-surface:      #1c2126;
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(1);
+  }
+
+  .badge-teal,
+  .badge-amber,
+  .badge-terra {
+    background-color: transparent;
+  }
+
+  .modal-content,
+  .btn-close {
+    filter: none;
+  }
+}
